@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scorer : MonoBehaviour
 {
     private int _hitTimes = 0;
+    [SerializeField] private Text hitsTextField;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,6 +20,6 @@ public class Scorer : MonoBehaviour
     void RaiseScore()
     {
         _hitTimes++;
-        Debug.Log($"U hit object {_hitTimes} times in this session.");
+        hitsTextField.text = $"Hits: {_hitTimes}";
     }
 }
