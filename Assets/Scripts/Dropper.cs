@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingObject : MonoBehaviour
+public class Dropper : MonoBehaviour
 {
     [SerializeField] private float waitTimeToFall;
 
@@ -14,6 +14,8 @@ public class FallingObject : MonoBehaviour
     {
         _renderer= GetComponent<MeshRenderer>();
         _rigidbody = GetComponent<Rigidbody>();
+
+        _renderer.enabled = false;
 
         StartCoroutine(WaitToFall());
     }

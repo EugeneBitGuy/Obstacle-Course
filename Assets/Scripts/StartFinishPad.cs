@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartFinishBehaviour : MonoBehaviour
+public class StartFinishPad : MonoBehaviour
 {
     [SerializeField] private CanvasGroup startCanvas;
     [SerializeField] private CanvasGroup finishCanvas;

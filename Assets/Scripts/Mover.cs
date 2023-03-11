@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 1f;
     private Rigidbody _rigidbody;
@@ -11,15 +11,7 @@ public class MovementController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
-
-    /*private void Update()
-    {
-        float xMovement = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime;
-        float zMovement = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime;
-        
-        transform.Translate(xMovement, 0, zMovement);
-    }*/
-
+    
     void FixedUpdate()
     {
         MovePlayer();
