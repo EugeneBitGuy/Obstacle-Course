@@ -2,22 +2,39 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Scorer : MonoBehaviour
 {
-    private int _hitTimes = 0;
+    public int _hitTimes = 0;
     [SerializeField] private Text hitsTextField;
+    [SerializeField] private Text minHitsTextField;
 
-    private void OnCollisionEnter(Collision collision)
+    public static Scorer Instance;
+
+    private void Awake()
     {
-        if (!collision.gameObject.CompareTag("Hit"))
+        if (FindObjectsOfType<Scorer>().Length > 1)
         {
-            RaiseScore();
+            DestroyImmediate(this);
+        }
+        else
+        {
+            Instance = this;
         }
     }
 
-    void RaiseScore()
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("HitScore"))
+        {
+            minHitsTextField.text = $"Min hits: {PlayerPrefs.GetInt("HitScore")}";
+        }
+    }
+    
+
+    public void RaiseScore()
     {
         _hitTimes++;
         hitsTextField.text = $"Hits: {_hitTimes}";

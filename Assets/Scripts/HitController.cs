@@ -16,7 +16,7 @@ public class HitController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player") && !gameObject.CompareTag("Hit"))
             Hit();
     }
 
@@ -25,5 +25,7 @@ public class HitController : MonoBehaviour
         _renderer.material.color = hitColor;
         
         gameObject.tag = "Hit";
+        
+        Scorer.Instance.RaiseScore();
     }
 }

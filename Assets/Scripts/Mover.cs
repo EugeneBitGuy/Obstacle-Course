@@ -24,7 +24,7 @@ public class Mover : MonoBehaviour
         
         Vector3 movement = new Vector3(xMovement, 0, zMovement).normalized * (movementSpeed * Time.fixedDeltaTime);
         
-        _rigidbody.MovePosition(_rigidbody.position + movement);
+        _rigidbody.AddForce(movement);
     }
 
 

@@ -7,13 +7,20 @@ public class Spinner : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 1f;
 
-    public void Update()
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public void FixedUpdate()
     {
         Spin();
     }
 
     void Spin()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        rb.AddTorque(0, rotationSpeed * 100 * Time.fixedDeltaTime, 0, ForceMode.Acceleration);
     }
 }
